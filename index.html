@@ -1,0 +1,622 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Christian Ivan Blanca — Full Stack Developer & QA Engineer</title>
+<meta name="description" content="Full Stack Developer and QA Engineer from the Philippines. TypeScript, Deno, Supabase/PostgreSQL, RBAC, cloud migrations, and web, mobile and AI product testing. Top Rated on Upwork, 100% Job Success.">
+<meta property="og:title" content="Christian Ivan Blanca — Full Stack Developer & QA Engineer">
+<meta property="og:description" content="TypeScript · Deno · Supabase · QA. Top Rated on Upwork with 100% Job Success.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%230b0d10'/><text x='16' y='22' font-family='monospace' font-size='15' font-weight='700' fill='%2398f5a8' text-anchor='middle'>CB</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#0b0d10; --bg-2:#111419; --card:#14181e; --line:#232a33;
+  --text:#e8ecf1; --muted:#8b96a5; --accent:#98f5a8; --accent-2:#7cc4ff;
+  --radius:16px; --max:1120px;
+  --sans:"Space Grotesk",system-ui,-apple-system,Segoe UI,Roboto,sans-serif;
+  --mono:"JetBrains Mono",ui-monospace,Consolas,monospace;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:80px}
+body{background:var(--bg);color:var(--text);font-family:var(--sans);line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+img{max-width:100%}
+.wrap{max-width:var(--max);margin:0 auto;padding:0 24px}
+.mono{font-family:var(--mono)}
+.accent{color:var(--accent)}
+::selection{background:var(--accent);color:#06210d}
+:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:6px}
+
+/* background grid glow */
+body::before{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;
+  background:
+    radial-gradient(600px 400px at 85% -5%,rgba(152,245,168,.12),transparent 70%),
+    radial-gradient(500px 400px at -10% 30%,rgba(124,196,255,.08),transparent 70%),
+    linear-gradient(var(--bg),var(--bg));}
+body::after{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;opacity:.35;
+  background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);
+  background-size:56px 56px;mask-image:radial-gradient(ellipse at top,#000 10%,transparent 65%)}
+
+/* nav */
+header{position:sticky;top:0;z-index:50;backdrop-filter:blur(12px);background:rgba(11,13,16,.72);border-bottom:1px solid transparent;transition:border-color .2s}
+header.scrolled{border-bottom-color:var(--line)}
+.nav{display:flex;align-items:center;justify-content:space-between;height:68px}
+.logo{font-family:var(--mono);font-weight:500;font-size:15px}
+.logo span{color:var(--accent)}
+.nav ul{display:flex;gap:28px;list-style:none;font-size:15px;color:var(--muted)}
+.nav ul a:hover{color:var(--text)}
+.nav-cta{display:flex;gap:12px;align-items:center}
+.menu-btn{display:none;background:none;border:1px solid var(--line);color:var(--text);border-radius:10px;width:42px;height:42px;cursor:pointer;font-size:18px}
+
+/* buttons */
+.btn{display:inline-flex;align-items:center;gap:8px;padding:12px 20px;border-radius:999px;font-weight:600;font-size:15px;border:1px solid var(--line);transition:transform .15s,background .15s,border-color .15s}
+.btn:hover{transform:translateY(-2px);border-color:#3a4552}
+.btn-primary{background:var(--accent);color:#06210d;border-color:var(--accent)}
+.btn-primary:hover{background:#b4ffc1;border-color:#b4ffc1}
+.btn-sm{padding:8px 16px;font-size:14px}
+
+/* hero */
+.hero{padding:88px 0 56px;display:grid;grid-template-columns:1.15fr .85fr;gap:56px;align-items:center}
+.status{display:inline-flex;align-items:center;gap:10px;padding:6px 14px;border:1px solid var(--line);border-radius:999px;font-family:var(--mono);font-size:13px;color:var(--muted);background:var(--bg-2)}
+.dot{width:8px;height:8px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 0 rgba(152,245,168,.6);animation:pulse 2s infinite}
+@keyframes pulse{70%{box-shadow:0 0 0 8px rgba(152,245,168,0)}100%{box-shadow:0 0 0 0 rgba(152,245,168,0)}}
+h1{font-size:clamp(40px,6.2vw,72px);line-height:1.02;letter-spacing:-.035em;margin:22px 0 20px;font-weight:700}
+h1 .grad{background:linear-gradient(90deg,var(--accent),var(--accent-2));-webkit-background-clip:text;background-clip:text;color:transparent}
+.lead{font-size:clamp(17px,1.6vw,19px);color:var(--muted);max-width:560px}
+.lead strong{color:var(--text);font-weight:500}
+.hero-actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:32px}
+
+.term{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;box-shadow:0 30px 80px -30px rgba(0,0,0,.7)}
+.term-bar{display:flex;align-items:center;gap:8px;padding:12px 16px;border-bottom:1px solid var(--line);background:var(--bg-2)}
+.term-bar i{width:11px;height:11px;border-radius:50%;background:#2d3540}
+.term-bar i:nth-child(1){background:#ff6b6b}.term-bar i:nth-child(2){background:#ffd166}.term-bar i:nth-child(3){background:#5fd17a}
+.term-bar span{margin-left:8px;font-family:var(--mono);font-size:12px;color:var(--muted)}
+.term pre{padding:20px 22px;font-family:var(--mono);font-size:13.5px;line-height:1.75;overflow-x:auto;color:#c9d1d9}
+.k{color:#ff9bce}.s{color:var(--accent)}.n{color:#ffd166}.c{color:#5c6773}.p{color:var(--accent-2)}
+.cursor{display:inline-block;width:8px;height:16px;background:var(--accent);vertical-align:-3px;animation:blink 1s steps(1) infinite}
+@keyframes blink{50%{opacity:0}}
+
+/* stats strip */
+.stats{display:grid;grid-template-columns:repeat(5,1fr);border:1px solid var(--line);border-radius:var(--radius);background:var(--bg-2);overflow:hidden;margin-bottom:24px}
+.stat{padding:22px 20px;border-right:1px solid var(--line)}
+.stat:last-child{border-right:0}
+.stat b{display:block;font-size:28px;letter-spacing:-.02em;font-weight:700}
+.stat span{font-size:13px;color:var(--muted);font-family:var(--mono)}
+
+/* sections */
+section{padding:88px 0}
+.eyebrow{font-family:var(--mono);font-size:13px;color:var(--accent);letter-spacing:.06em;text-transform:uppercase}
+h2{font-size:clamp(30px,4vw,44px);letter-spacing:-.03em;line-height:1.1;margin:10px 0 16px}
+.sec-lead{color:var(--muted);max-width:620px;margin-bottom:44px}
+
+/* about */
+.about{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:start}
+.about p{color:var(--muted);margin-bottom:16px}
+.about p strong{color:var(--text);font-weight:500}
+.facts{display:grid;gap:12px}
+.fact{display:flex;justify-content:space-between;gap:16px;padding:16px 18px;border:1px solid var(--line);border-radius:12px;background:var(--card);font-size:15px}
+.fact span:first-child{color:var(--muted);font-family:var(--mono);font-size:13px}
+.fact span:last-child{text-align:right}
+
+/* impact bento */
+.bento{display:grid;grid-template-columns:repeat(6,1fr);gap:16px}
+.tile{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:26px;position:relative;overflow:hidden;transition:border-color .2s,transform .2s}
+.tile:hover{border-color:#36414d;transform:translateY(-3px)}
+.tile .num{font-size:clamp(36px,4.5vw,52px);font-weight:700;letter-spacing:-.04em;line-height:1}
+.tile .num small{font-size:.5em;color:var(--muted);margin-left:2px}
+.tile p{color:var(--muted);margin-top:10px;font-size:15px}
+.tile.lg{grid-column:span 3}
+.tile.md{grid-column:span 2}
+.tile.feature{background:linear-gradient(140deg,rgba(152,245,168,.12),rgba(124,196,255,.06) 60%,var(--card));border-color:rgba(152,245,168,.25)}
+.tile .tag{position:absolute;top:22px;right:22px;font-family:var(--mono);font-size:11px;color:var(--muted);border:1px solid var(--line);padding:3px 9px;border-radius:999px}
+
+/* experience timeline */
+.timeline{position:relative;display:grid;gap:18px}
+.job{display:grid;grid-template-columns:200px 1fr;gap:32px;padding:28px;border:1px solid var(--line);border-radius:var(--radius);background:var(--card);transition:border-color .2s}
+.job:hover{border-color:#36414d}
+.job .when{font-family:var(--mono);font-size:13px;color:var(--muted)}
+.job .when .badge{display:inline-block;margin-top:8px;color:var(--accent);border:1px solid rgba(152,245,168,.3);padding:2px 8px;border-radius:999px;font-size:11px}
+.job h3{font-size:20px;letter-spacing:-.01em}
+.job .org{color:var(--accent-2);font-size:15px;margin:2px 0 12px}
+.job ul{list-style:none;display:grid;gap:8px;color:var(--muted);font-size:15px}
+.job li{padding-left:20px;position:relative}
+.job li::before{content:"▹";position:absolute;left:0;color:var(--accent)}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}
+.chip{font-family:var(--mono);font-size:12px;padding:4px 10px;border-radius:999px;background:var(--bg-2);border:1px solid var(--line);color:#c4cdd8}
+
+/* projects */
+.projects{display:grid;grid-template-columns:repeat(2,1fr);gap:20px}
+.proj{display:flex;flex-direction:column;background:var(--card);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;transition:border-color .2s,transform .2s}
+.proj:hover{border-color:#36414d;transform:translateY(-4px)}
+.proj.wide{grid-column:span 2}
+.proj-art{height:150px;position:relative;border-bottom:1px solid var(--line);overflow:hidden;display:flex;align-items:center;justify-content:center;font-family:var(--mono);font-size:13px;color:var(--muted)}
+.proj-body{padding:24px 26px 26px;display:flex;flex-direction:column;flex:1}
+.proj .kind{font-family:var(--mono);font-size:12px;color:var(--accent)}
+.proj h3{font-size:21px;letter-spacing:-.01em;margin:6px 0 10px}
+.proj p{color:var(--muted);font-size:15px;flex:1}
+.proj .chips{margin-top:18px}
+/* generative project art */
+.art-migrate{background:radial-gradient(circle at 30% 50%,rgba(255,155,206,.18),transparent 45%),radial-gradient(circle at 70% 50%,rgba(152,245,168,.2),transparent 45%),var(--bg-2)}
+.art-migrate .flow{display:flex;align-items:center;gap:18px;font-size:14px}
+.art-migrate .box{padding:10px 16px;border:1px solid var(--line);border-radius:10px;background:var(--card);color:var(--text)}
+.art-migrate .arrow{color:var(--accent);letter-spacing:4px}
+.art-ecg{background:var(--bg-2)}
+.art-ecg svg{width:100%;height:100%}
+.art-bot{background:radial-gradient(circle at 50% 120%,rgba(124,196,255,.25),transparent 60%),var(--bg-2)}
+.bubble{padding:8px 14px;border-radius:14px;background:var(--card);border:1px solid var(--line);color:var(--text);font-family:var(--sans);font-size:13px}
+.bubble.me{background:rgba(124,196,255,.15);border-color:rgba(124,196,255,.35)}
+.art-qa{background:repeating-linear-gradient(135deg,var(--bg-2) 0 14px,#13171c 14px 28px)}
+.checklist{font-size:13px;line-height:1.9;color:var(--text)}
+.checklist .ok{color:var(--accent)}.checklist .bug{color:#ff6b6b}
+.art-gps{background:radial-gradient(circle,rgba(152,245,168,.1) 1px,transparent 1px) 0 0/18px 18px,var(--bg-2)}
+.pin{width:18px;height:18px;border-radius:50% 50% 50% 0;transform:rotate(-45deg);background:var(--accent);box-shadow:0 0 0 8px rgba(152,245,168,.15),0 0 0 18px rgba(152,245,168,.07)}
+.art-scrape{background:var(--bg-2);flex-direction:column;gap:4px;align-items:flex-start;padding:0 26px;justify-content:center}
+.art-scrape code{font-size:12.5px}
+
+/* skills */
+.skills{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.skill-group{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:24px}
+.skill-group h3{font-size:16px;margin-bottom:14px;display:flex;align-items:center;gap:10px}
+.skill-group h3 .ico{width:30px;height:30px;border-radius:8px;display:grid;place-items:center;background:var(--bg-2);border:1px solid var(--line);font-family:var(--mono);font-size:13px;color:var(--accent)}
+.skill-group ul{list-style:none;display:grid;gap:8px;color:var(--muted);font-size:14.5px}
+
+/* testimonials */
+.quotes{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.quote{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:30px;display:flex;flex-direction:column;gap:18px}
+.stars{color:#ffd166;letter-spacing:3px;font-size:15px}
+.quote blockquote{font-size:20px;line-height:1.45;letter-spacing:-.01em}
+.quote .who{display:flex;align-items:center;gap:12px;margin-top:auto}
+.avatar{width:40px;height:40px;border-radius:50%;display:grid;place-items:center;font-weight:700;background:var(--bg-2);border:1px solid var(--line);color:var(--accent-2)}
+.who small{display:block;color:var(--muted);font-size:13px}
+
+/* education */
+.edu{display:grid;grid-template-columns:1.4fr 1fr;gap:20px}
+.edu .card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:28px}
+.edu h3{font-size:20px}
+.edu .meta{font-family:var(--mono);font-size:13px;color:var(--muted);margin:4px 0 14px}
+.edu p{color:var(--muted);font-size:15px}
+.lang{display:flex;justify-content:space-between;padding:14px 0;border-bottom:1px solid var(--line)}
+.lang:last-child{border-bottom:0}
+.lang span:last-child{color:var(--muted);font-family:var(--mono);font-size:13px}
+
+/* contact */
+.contact{border:1px solid var(--line);border-radius:24px;padding:64px 48px;text-align:center;background:linear-gradient(160deg,rgba(152,245,168,.1),transparent 50%),var(--card);position:relative;overflow:hidden}
+.contact h2{font-size:clamp(32px,5vw,56px);max-width:760px;margin:12px auto 16px}
+.contact p{color:var(--muted);max-width:520px;margin:0 auto 32px}
+.contact .hero-actions{justify-content:center;margin-top:0}
+.email{font-family:var(--mono);color:var(--text);border-bottom:1px dashed var(--muted);word-break:break-all}
+
+footer{padding:40px 0;color:var(--muted);font-size:14px}
+footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
+footer a:hover{color:var(--text)}
+.socials{display:flex;gap:20px}
+
+/* reveal (only when JS runs) */
+.js .reveal{opacity:0;transform:translateY(18px);transition:opacity .6s ease,transform .6s ease}
+.js .reveal.in{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{animation:none!important;transition:none!important}
+  .js .reveal{opacity:1;transform:none}
+}
+
+/* responsive */
+@media (max-width:960px){
+  .hero{grid-template-columns:1fr;padding-top:56px}
+  .about,.edu{grid-template-columns:1fr}
+  .quotes{grid-template-columns:1fr}
+  .skills{grid-template-columns:repeat(2,1fr)}
+  .stats{grid-template-columns:repeat(3,1fr)}
+  .stat:nth-child(3){border-right:0}
+  .stat:nth-child(n+4){border-top:1px solid var(--line)}
+  .tile.lg,.tile.md{grid-column:span 3}
+}
+@media (max-width:760px){
+  .wrap{padding:0 16px}
+  .nav ul,.nav-cta .btn{display:none}
+  .menu-btn{display:block}
+  .nav.open ul{display:flex;flex-direction:column;position:absolute;top:68px;left:0;right:0;padding:20px 16px;gap:18px;background:var(--bg);border-bottom:1px solid var(--line)}
+  section{padding:64px 0}
+  .job{grid-template-columns:1fr;gap:12px;padding:22px}
+  .projects,.quotes{grid-template-columns:1fr}
+  .proj.wide{grid-column:auto}
+  .tile.lg,.tile.md{grid-column:span 6}
+  .skills{grid-template-columns:1fr}
+  .stats{grid-template-columns:repeat(2,1fr)}
+  .stat{border-right:1px solid var(--line)!important;border-top:1px solid var(--line)}
+  .stat:nth-child(-n+2){border-top:0}
+  .stat:nth-child(2n){border-right:0!important}
+  .stat:last-child{grid-column:span 2;border-right:0!important}
+  .contact{padding:44px 20px}
+  .term pre{font-size:12px;padding:16px}
+  .art-migrate .flow{gap:10px;font-size:12px}
+}
+</style>
+</head>
+<body>
+<script>document.documentElement.classList.add('js')</script>
+
+<header id="top">
+  <nav class="wrap nav" aria-label="Main">
+    <a href="#top" class="logo">christian<span>.dev</span></a>
+    <ul>
+      <li><a href="#about">About</a></li>
+      <li><a href="#work">Experience</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <div class="nav-cta">
+      <a class="btn btn-sm" href="Christian_Blanca_Resume.pdf" download>Résumé ↓</a>
+      <button class="menu-btn" aria-label="Toggle menu" aria-expanded="false">☰</button>
+    </div>
+  </nav>
+</header>
+
+<main>
+<div class="wrap">
+  <!-- HERO -->
+  <div class="hero">
+    <div>
+      <span class="status"><i class="dot"></i>Available for freelance & remote roles</span>
+      <h1>Christian Ivan Blanca<br><span class="grad">Full Stack Developer & QA Engineer.</span></h1>
+      <p class="lead">I build <strong>secure, serverless web apps</strong> with TypeScript, Deno and Supabase, and I <strong>test them like a user would</strong> before they ship. Based in Laguna, Philippines, working with teams worldwide.</p>
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="https://www.upwork.com/freelancers/christianivanb" target="_blank" rel="noopener">Hire me on Upwork ↗</a>
+        <a class="btn" href="#projects">See my work</a>
+      </div>
+    </div>
+    <div class="term reveal" aria-hidden="true">
+      <div class="term-bar"><i></i><i></i><i></i><span>~/christian/profile.ts</span></div>
+<pre><span class="k">const</span> <span class="p">christian</span> = {
+  role: <span class="s">"Full Stack Dev + QA"</span>,
+  stack: [<span class="s">"TypeScript"</span>, <span class="s">"Deno"</span>,
+          <span class="s">"Supabase"</span>, <span class="s">"PostgreSQL"</span>],
+  focus: [<span class="s">"RBAC"</span>, <span class="s">"RLS"</span>, <span class="s">"Edge Functions"</span>],
+  upwork: {
+    jobSuccess: <span class="n">100</span>, <span class="c">// %</span>
+    rating: <span class="n">5.0</span>,
+    badge: <span class="s">"Top Rated"</span>,
+  },
+  shipsWithTests: <span class="k">true</span>,
+};
+<span class="c">// building something? let's talk</span> <span class="cursor"></span></pre>
+    </div>
+  </div>
+
+  <!-- STATS -->
+  <div class="stats reveal">
+    <div class="stat"><b class="accent">100%</b><span>Job Success</span></div>
+    <div class="stat"><b>Top Rated</b><span>on Upwork</span></div>
+    <div class="stat"><b>5.0 ★</b><span>20 reviews</span></div>
+    <div class="stat"><b>22</b><span>jobs completed</span></div>
+    <div class="stat"><b>1.7K+</b><span>hours billed</span></div>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="wrap about">
+    <div class="reveal">
+      <span class="eyebrow">01 · About</span>
+      <h2>A developer who thinks like a tester.</h2>
+      <p>I'm a <strong>Computer Science graduate</strong> from the University of Cabuyao. Right now I'm a <strong>part-time Full Stack Developer at Omega Education</strong>, an Australian EdTech platform. I build CRM, onboarding, hiring and communications features from the database up to the UI.</p>
+      <p>Alongside that, I still do <strong>freelance software and website QA</strong> on Upwork, testing web, mobile, SaaS and AI products. QA has taught me to look for edge cases, broken flows and security gaps before users find them. I bring the same habit to the code I write.</p>
+      <p>I've also built RAG chatbots, Python scrapers and a 200K-row biomedical database, and trained deep-learning models for ECG classification. I'm comfortable with whatever the project needs.</p>
+    </div>
+    <div class="facts reveal">
+      <div class="fact"><span>location</span><span>Cabuyao, Laguna, PH · GMT+8</span></div>
+      <div class="fact"><span>current</span><span>Full Stack Dev @ Omega Education<br>Freelance Software & Website QA</span></div>
+      <div class="fact"><span>education</span><span>BS Computer Science, 2026</span></div>
+      <div class="fact"><span>languages</span><span>English (Fluent) · Filipino (Native)</span></div>
+      <div class="fact"><span>works with</span><span>Claude Code · Lovable · Jira · Figma</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- IMPACT -->
+<section id="impact" style="padding-top:0">
+  <div class="wrap">
+    <span class="eyebrow reveal">02 · Impact</span>
+    <h2 class="reveal">Numbers from real production work.</h2>
+    <p class="sec-lead reveal">From the Lovable-to-Supabase migration and security hardening I led at Omega Education.</p>
+    <div class="bento">
+      <div class="tile lg feature reveal"><span class="tag">security</span><div class="num">545</div><p>RLS-enabled tables secured with role-based access controls, plus a critical privilege-escalation fix.</p></div>
+      <div class="tile lg reveal"><span class="tag">migration</span><div class="num">141</div><p>Edge Functions deployed during the Lovable → Supabase migration.</p></div>
+      <div class="tile md reveal"><div class="num">7,339</div><p>storage objects transferred</p></div>
+      <div class="tile md reveal"><div class="num">126</div><p>SECURITY DEFINER functions audited</p></div>
+      <div class="tile md reveal"><div class="num">32</div><p>Edge Functions moved to the Gemini API directly</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="work">
+  <div class="wrap">
+    <span class="eyebrow reveal">03 · Experience</span>
+    <h2 class="reveal">Where I've worked.</h2>
+    <p class="sec-lead reveal">Full-stack engineering, QA, data and automation for remote teams and local organizations.</p>
+    <div class="timeline">
+      <article class="job reveal">
+        <div class="when">Jun 2026 — Present<br><span class="badge">current</span></div>
+        <div>
+          <h3>Part-Time Full Stack Developer</h3>
+          <div class="org">Omega Education · Remote, Australia</div>
+          <ul>
+            <li>Build frontend and backend features across CRM, onboarding, hiring and communications workflows.</li>
+            <li>Implemented role-based access across 545 RLS tables, audited 126 SECURITY DEFINER functions and fixed a critical privilege-escalation issue.</li>
+            <li>Led the Lovable → Supabase migration: 141 Edge Functions, 88 restored accounts, 7,339 storage objects.</li>
+            <li>Replaced an AI gateway dependency in 32 Edge Functions with direct Gemini API integration.</li>
+          </ul>
+          <div class="chips"><span class="chip">TypeScript</span><span class="chip">Deno</span><span class="chip">Supabase</span><span class="chip">PostgreSQL</span><span class="chip">Cloudflare Pages</span><span class="chip">Gemini API</span></div>
+        </div>
+      </article>
+      <article class="job reveal">
+        <div class="when">Nov 2025 — Present<br><span class="badge">part-time · freelance</span></div>
+        <div>
+          <h3>Software & Website QA Tester</h3>
+          <div class="org">Upwork · Remote</div>
+          <ul>
+            <li>Ongoing freelance software and website QA: manual, regression, exploratory, cross-browser and usability testing across web, mobile, SaaS, EdTech and AI products.</li>
+            <li>Tested products including Tradelance, Vacature-ORBIT, Trainee.in, OneMind, Cogito Coach, a Bubble-based web app and a Confluence intranet app.</li>
+            <li>Found 50+ functional, UI and logic issues across 200+ workflows, each with repro steps, severity and screenshots.</li>
+            <li>Reviewed 70+ screens against Figma designs and evaluated multi-turn AI and LLM behavior.</li>
+          </ul>
+          <div class="chips"><span class="chip">Manual QA</span><span class="chip">Website QA</span><span class="chip">Regression</span><span class="chip">Cross-Browser</span><span class="chip">Figma</span><span class="chip">AI Testing</span></div>
+        </div>
+      </article>
+      <article class="job reveal">
+        <div class="when">Jan 2026 — Apr 2026</div>
+        <div>
+          <h3>Software Developer & IT Support Specialist</h3>
+          <div class="org">PESO & GEMPHIL Technologies · Cabuyao, Laguna</div>
+          <ul>
+            <li>Built the GPS tracking module and user-side features for an attendance system serving ~1,000 users.</li>
+            <li>Worked on attendance logging, camera-proof workflows, troubleshooting and IT documentation.</li>
+          </ul>
+          <div class="chips"><span class="chip">PHP Laravel</span><span class="chip">TypeScript</span><span class="chip">GPS</span></div>
+        </div>
+      </article>
+      <article class="job reveal">
+        <div class="when">Mar 2025 — Oct 2025</div>
+        <div>
+          <h3>Data Analyst</h3>
+          <div class="org">Upwork · Remote</div>
+          <ul>
+            <li>Organized and validated ~200,000 biomedical and health records.</li>
+            <li>Built spreadsheet-based checks that caught duplicates, formatting issues and classification errors.</li>
+          </ul>
+          <div class="chips"><span class="chip">Excel</span><span class="chip">Data Validation</span><span class="chip">Health Data</span></div>
+        </div>
+      </article>
+      <article class="job reveal">
+        <div class="when">Jun 2025 — Aug 2025</div>
+        <div>
+          <h3>Python Web Scraping Developer</h3>
+          <div class="org">Upwork · Remote</div>
+          <ul>
+            <li>Built extraction workflows that collected and structured 1,200+ records from 100+ institutional websites.</li>
+            <li>Handled inconsistent layouts, missing fields and manual validation.</li>
+          </ul>
+          <div class="chips"><span class="chip">Python</span><span class="chip">Selenium</span><span class="chip">Playwright</span><span class="chip">Pandas</span></div>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="wrap">
+    <span class="eyebrow reveal">04 · Projects</span>
+    <h2 class="reveal">Selected work.</h2>
+    <p class="sec-lead reveal">Production systems, AI builds, research and client projects. More on my <a class="accent" href="https://www.upwork.com/freelancers/christianivanb" target="_blank" rel="noopener">Upwork portfolio ↗</a></p>
+    <div class="projects">
+      <article class="proj wide reveal">
+        <div class="proj-art art-migrate"><div class="flow mono"><span class="box">Lovable</span><span class="arrow">———▸</span><span class="box">Supabase</span><span class="arrow">———▸</span><span class="box">Cloudflare</span></div></div>
+        <div class="proj-body">
+          <span class="kind">Production · Omega Education</span>
+          <h3>EdTech Platform Migration & Security Hardening</h3>
+          <p>Moved a live education platform off Lovable onto self-managed Supabase with no lost data. I redeployed 141 Edge Functions, restored 88 user accounts and moved 7,339 files. I also locked down 545 tables with row-level security and closed a privilege-escalation hole found during the audit.</p>
+          <div class="chips"><span class="chip">Supabase</span><span class="chip">PostgreSQL RLS</span><span class="chip">Deno</span><span class="chip">RBAC</span><span class="chip">Cloud Migration</span></div>
+        </div>
+      </article>
+      <article class="proj reveal">
+        <div class="proj-art art-ecg">
+          <svg viewBox="0 0 400 150" preserveAspectRatio="none" aria-hidden="true"><polyline fill="none" stroke="#98f5a8" stroke-width="2" points="0,90 40,90 55,90 62,80 70,90 90,90 100,95 108,20 116,125 124,90 150,90 170,72 190,90 230,90 245,90 252,80 260,90 280,90 290,95 298,20 306,125 314,90 340,90 360,72 380,90 400,90"/></svg>
+        </div>
+        <div class="proj-body">
+          <span class="kind">Research · Thesis</span>
+          <h3>ECG-Based Atrial Fibrillation Classification</h3>
+          <p>CNN-LSTM and ResNet-Attentive models in PyTorch on the PTB-XL ECG dataset with FFT preprocessing. They classify normal rhythm, AFib and atrial flutter. I handled the whole pipeline, from preprocessing to evaluation. Accepted for presentation at the <strong style="color:var(--text);font-weight:500">RSU International Research Conference 2026</strong>.</p>
+          <div class="chips"><span class="chip">PyTorch</span><span class="chip">Deep Learning</span><span class="chip">FFT</span><span class="chip">PTB-XL</span></div>
+        </div>
+      </article>
+      <article class="proj reveal">
+        <div class="proj-art art-bot"><div style="display:grid;gap:8px;width:72%"><span class="bubble me" style="justify-self:end">Paano mag-reset ng password?</span><span class="bubble">Ayon sa User Manual p.4: go to Settings → Security… 📄</span></div></div>
+        <div class="proj-body">
+          <span class="kind">AI · Full-Stack AI Developer</span>
+          <h3>DaptBot: Bilingual RAG Support Bot for SMEs</h3>
+          <p>Businesses upload their PDFs, such as manuals, FAQs and guides, and customers chat with that content in English or Tagalog. It uses semantic search over a vector database plus generative AI, so answers come from the company's own documents with no heavy data pipeline.</p>
+          <div class="chips"><span class="chip">FastAPI</span><span class="chip">RAG</span><span class="chip">Vector DB</span><span class="chip">NLP</span></div>
+        </div>
+      </article>
+      <article class="proj reveal">
+        <div class="proj-art art-qa"><div class="checklist mono"><div><span class="ok">✓</span> Curiosity Coach · coaching mode</div><div><span class="ok">✓</span> Claim Analysis · hint mode</div><div><span class="bug">✗</span> test mode leaks answer · sev:high</div><div><span class="ok">✓</span> regression retest passed</div></div></div>
+        <div class="proj-body">
+          <span class="kind">QA · Client work</span>
+          <h3>Cogito Coach: Functional, UX & Behavioral AI Testing</h3>
+          <p>End-to-end QA for a conversational EdTech platform that teaches critical thinking with AI coaches across Coaching, Hint and Test modes. I ran regression, UX audits and multi-turn LLM behavior and fidelity tests. The goal was to keep the AI aligned with its teaching framework.</p>
+          <div class="chips"><span class="chip">LLM Testing</span><span class="chip">Regression</span><span class="chip">UX Audit</span><span class="chip">QA Reports</span></div>
+        </div>
+      </article>
+      <article class="proj reveal">
+        <div class="proj-art art-bot" style="background:radial-gradient(circle at 50% 120%,rgba(255,155,206,.22),transparent 60%),var(--bg-2)"><div style="display:grid;gap:8px;width:72%"><span class="bubble me" style="justify-self:end">Summarize Q3 report.pdf</span><span class="bubble">Revenue grew 12%, driven by… <span class="mono" style="color:var(--muted);font-size:11px">[source p.2]</span></span></div></div>
+        <div class="proj-body">
+          <span class="kind">AI · Solo developer</span>
+          <h3>PinNaChat: RAG-Powered Conversational AI</h3>
+          <p>A chatbot that answers questions about the documents and text files you upload. It combines retrieval with NLP for accurate, context-aware answers. I built it alone as a simple, scalable tool for searching your own knowledge base.</p>
+          <div class="chips"><span class="chip">Python</span><span class="chip">Streamlit</span><span class="chip">RAG</span><span class="chip">Database Design</span></div>
+        </div>
+      </article>
+      <article class="proj reveal">
+        <div class="proj-art art-scrape mono"><code><span class="c">-- 12 body systems</span></code><code>endogenous_compounds <span class="n">92,000</span></code><code>human_diseases &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="n">32,000</span></code><code>parasites &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="n">28,000</span></code><code><span class="c">-- total → 200K+ rows</span></code></div>
+        <div class="proj-body">
+          <span class="kind">Data · AI Researcher & Data Engineer</span>
+          <h3>Health & Biology Database</h3>
+          <p>An AI-assisted biomedical database of 200K+ entries across 12 body systems, covering proteins, amino acids, toxins, vaccines, enzymes and endogenous compounds. Python and AI tooling handled collection and structuring to keep it accurate and consistent. This was a 950+ hour engagement rated 5★.</p>
+          <div class="chips"><span class="chip">Python</span><span class="chip">AI Tools</span><span class="chip">Web Scraping</span><span class="chip">Data Validation</span></div>
+        </div>
+      </article>
+      <article class="proj reveal">
+        <div class="proj-art art-gps"><span class="pin"></span></div>
+        <div class="proj-body">
+          <span class="kind">Production · PESO & GEMPHIL</span>
+          <h3>GPS Attendance System</h3>
+          <p>A GPS tracking module and user-side features for an attendance system used by about 1,000 people. It includes location-verified logging and camera-proof check-ins.</p>
+          <div class="chips"><span class="chip">Laravel</span><span class="chip">TypeScript</span><span class="chip">Geolocation</span></div>
+        </div>
+      </article>
+      <article class="proj reveal">
+        <div class="proj-art art-scrape mono"><code><span class="k">with</span> <span class="p">ThreadPool</span>(<span class="n">16</span>) <span class="k">as</span> pool:</code><code>&nbsp;&nbsp;coaches = pool.map(<span class="p">scrape</span>, <span class="p">athletic_sites</span>)</code><code><span class="c"># 100+ schools → 1,200+ coach records</span></code></div>
+        <div class="proj-body">
+          <span class="kind">Automation · Python Developer</span>
+          <h3>Champs Team Coach Scraper</h3>
+          <p>A modular, multithreaded scraping system that collects, cleans and refreshes college coaching data from 100+ official athletic websites. It captures names, emails, titles, schools, conferences and images. It replaced manual research for a sports analytics team.</p>
+          <div class="chips"><span class="chip">Python</span><span class="chip">Selenium</span><span class="chip">Multithreading</span><span class="chip">Pandas</span></div>
+        </div>
+      </article>
+      <article class="proj reveal">
+        <div class="proj-art art-migrate"><div class="flow mono"><span class="box">React</span><span class="arrow">—▸</span><span class="box">Laravel API</span><span class="arrow">—▸</span><span class="box">MySQL</span></div></div>
+        <div class="proj-body">
+          <span class="kind">Web · Full-Stack Developer</span>
+          <h3>E-Commerce Store: Laravel + React</h3>
+          <p>A full-stack e-commerce web app with a Laravel back end, a React and Bootstrap front end, and a MySQL database. Built as an academic project.</p>
+          <div class="chips"><span class="chip">Laravel</span><span class="chip">React</span><span class="chip">MySQL</span><span class="chip">Bootstrap</span></div>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="wrap">
+    <span class="eyebrow reveal">05 · Skills</span>
+    <h2 class="reveal">Tools I use.</h2>
+    <p class="sec-lead reveal">Grouped by the kind of problem they solve.</p>
+    <div class="skills">
+      <div class="skill-group reveal"><h3><span class="ico">&lt;/&gt;</span>Full Stack</h3><ul><li>TypeScript & JavaScript</li><li>React</li><li>Deno & Edge Functions</li><li>PHP Laravel</li><li>Java Spring Boot</li><li>FastAPI & REST APIs</li><li>Stripe & Gemini APIs</li></ul></div>
+      <div class="skill-group reveal"><h3><span class="ico">db</span>Data & Cloud</h3><ul><li>Supabase & PostgreSQL</li><li>Row-Level Security</li><li>Auth & RBAC</li><li>Serverless Architecture</li><li>Cloudflare Pages</li><li>Cloud Migration</li></ul></div>
+      <div class="skill-group reveal"><h3><span class="ico">✓</span>Quality Assurance</h3><ul><li>Manual & Functional QA</li><li>Regression & Exploratory</li><li>API & UAT Testing</li><li>AI Feature Testing</li><li>Figma UI Validation</li><li>Bug Reporting & Retesting</li></ul></div>
+      <div class="skill-group reveal"><h3><span class="ico">py</span>Data, AI & Automation</h3><ul><li>Python & Pandas</li><li>Selenium & Playwright</li><li>RAG & Vector DBs</li><li>PyTorch</li><li>Excel Data Validation</li><li>Git & GitHub</li><li>Jira & Documentation</li></ul></div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section id="reviews">
+  <div class="wrap">
+    <span class="eyebrow reveal">06 · Client feedback</span>
+    <h2 class="reveal">What clients say.</h2>
+    <p class="sec-lead reveal">5.0 average across 20 reviews on Upwork.</p>
+    <div class="quotes">
+      <figure class="quote reveal">
+        <div class="stars" aria-label="5 out of 5 stars">★★★★★</div>
+        <blockquote>“Awesome freelancer you can not ask for a better person for performance and reliability. Hire him if you can!”</blockquote>
+        <figcaption class="who"><span class="avatar">M</span><div>Michael F.<small>Human Health Databases project</small></div></figcaption>
+      </figure>
+      <figure class="quote reveal">
+        <div class="stars" aria-label="5 out of 5 stars">★★★★★</div>
+        <blockquote>“Fast delivery without compromising quality.”</blockquote>
+        <figcaption class="who"><span class="avatar">I</span><div>Isabella O.<small>Intranet App Tester for Confluence</small></div></figcaption>
+      </figure>
+      <figure class="quote reveal">
+        <div class="stars" aria-label="5 out of 5 stars">★★★★★</div>
+        <blockquote>“Pleasure working with you. Highly recommended.”</blockquote>
+        <figcaption class="who"><span class="avatar">U</span><div>Upwork client<small>Website UX Tester</small></div></figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<!-- EDUCATION -->
+<section id="education" style="padding-top:0">
+  <div class="wrap">
+    <span class="eyebrow reveal">07 · Education</span>
+    <h2 class="reveal">Background.</h2>
+    <div class="edu" style="margin-top:32px">
+      <div class="card reveal">
+        <h3>BS Computer Science</h3>
+        <div class="meta">Pamantasan ng Cabuyao · Aug 2022 — Jun 2026</div>
+        <p>Coursework in object-oriented programming, databases, Java Spring Boot, JavaFX and system design. Thesis: FFT-based atrial fibrillation classification with CNN-LSTM and ResNet-Attentive models.</p>
+      </div>
+      <div class="card reveal">
+        <h3>Certifications</h3>
+        <div style="margin-top:8px">
+          <div class="lang"><span>Using Python to Access Web Data</span><span>Coursera · 2024</span></div>
+          <div class="lang"><span>Certified Prompt Engineer</span><span>Coursera · 2023</span></div>
+        </div>
+        <h3 style="margin-top:24px">Languages</h3>
+        <div style="margin-top:8px">
+          <div class="lang"><span>English</span><span>Fluent</span></div>
+          <div class="lang"><span>Filipino</span><span>Native</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="wrap">
+    <div class="contact reveal">
+      <span class="eyebrow">08 · Contact</span>
+      <h2>Have a project in mind? <span class="accent">Let's build it.</span></h2>
+      <p>Open to freelance work, contracts and remote full-stack or QA roles. Email <a class="email" href="mailto:blancachristianivan54@gmail.com">blancachristianivan54@gmail.com</a>.</p>
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="mailto:blancachristianivan54@gmail.com">Send an email</a>
+        <a class="btn" href="https://www.upwork.com/freelancers/christianivanb" target="_blank" rel="noopener">Upwork ↗</a>
+        <a class="btn" href="https://www.linkedin.com/in/ivblancs" target="_blank" rel="noopener">LinkedIn ↗</a>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>© <span id="yr">2026</span> Christian Ivan C. Blanca</span>
+    <div class="socials">
+      <a href="https://www.upwork.com/freelancers/christianivanb" target="_blank" rel="noopener">Upwork</a>
+      <a href="https://www.linkedin.com/in/ivblancs" target="_blank" rel="noopener">LinkedIn</a>
+      <a href="Christian_Blanca_Resume.pdf" download>Résumé</a>
+      <a href="#top">Back to top ↑</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+document.getElementById('yr').textContent = new Date().getFullYear();
+const header = document.querySelector('header');
+addEventListener('scroll', () => header.classList.toggle('scrolled', scrollY > 8), {passive:true});
+const nav = document.querySelector('.nav'), btn = document.querySelector('.menu-btn');
+btn.addEventListener('click', () => btn.setAttribute('aria-expanded', nav.classList.toggle('open')));
+// scroll in JS so in-page links work even where hash navigation is blocked (data: URLs, embeds)
+document.addEventListener('click', e => {
+  const a = e.target.closest('a[href^="#"]');
+  if (!a) return;
+  const el = document.getElementById(a.getAttribute('href').slice(1));
+  if (!el) return;
+  e.preventDefault();
+  el.scrollIntoView({behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth'});
+  nav.classList.remove('open'); btn.setAttribute('aria-expanded', false);
+});
+const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } }), {threshold:.12});
+document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+</script>
+</body>
+</html>
