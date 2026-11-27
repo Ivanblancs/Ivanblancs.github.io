@@ -182,6 +182,15 @@ h2{font-size:clamp(30px,4vw,44px);letter-spacing:-.03em;line-height:1.1;margin:1
 .lang:last-child{border-bottom:0}
 .lang span:last-child{color:var(--muted);font-family:var(--mono);font-size:13px}
 
+/* certifications */
+.certs{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:16px}
+.cert{display:flex;flex-direction:column;gap:8px;padding:22px;background:var(--card);border:1px solid var(--line);border-radius:var(--radius);transition:border-color .2s,transform .2s}
+.cert:hover{border-color:rgba(152,245,168,.4);transform:translateY(-3px)}
+.cert .issuer{font-family:var(--mono);font-size:12px;color:var(--accent-2)}
+.cert h4{font-size:16px;line-height:1.35;font-weight:600;flex:1}
+.cert-foot{display:flex;justify-content:space-between;font-family:var(--mono);font-size:12px;color:var(--muted)}
+.cert .verify{color:var(--accent)}
+
 /* contact */
 .contact{border:1px solid var(--line);border-radius:24px;padding:64px 48px;text-align:center;background:linear-gradient(160deg,rgba(152,245,168,.1),transparent 50%),var(--card);position:relative;overflow:hidden}
 .contact h2{font-size:clamp(32px,5vw,56px);max-width:760px;margin:12px auto 16px}
@@ -547,7 +556,7 @@ footer a:hover{color:var(--text)}
 <section id="education" style="padding-top:0">
   <div class="wrap">
     <span class="eyebrow reveal">07 · Education</span>
-    <h2 class="reveal">Background.</h2>
+    <h2 class="reveal">Education & certifications.</h2>
     <div class="edu" style="margin-top:32px">
       <div class="card reveal">
         <h3>BS Computer Science</h3>
@@ -555,17 +564,21 @@ footer a:hover{color:var(--text)}
         <p>Coursework in object-oriented programming, databases, Java Spring Boot, JavaFX and system design. Thesis: FFT-based atrial fibrillation classification with CNN-LSTM and ResNet-Attentive models.</p>
       </div>
       <div class="card reveal">
-        <h3>Certifications</h3>
-        <div style="margin-top:8px">
-          <div class="lang"><span>Using Python to Access Web Data</span><span>Coursera · 2024</span></div>
-          <div class="lang"><span>Certified Prompt Engineer</span><span>Coursera · 2023</span></div>
-        </div>
-        <h3 style="margin-top:24px">Languages</h3>
+        <h3>Languages</h3>
         <div style="margin-top:8px">
           <div class="lang"><span>English</span><span>Fluent</span></div>
           <div class="lang"><span>Filipino</span><span>Native</span></div>
         </div>
       </div>
+    </div>
+
+    <h3 class="reveal" style="font-size:22px;margin:48px 0 18px">Certifications <span class="mono" style="font-size:13px;color:var(--muted);font-weight:400">· verified on Coursera</span></h3>
+    <div class="certs">
+      <a class="cert reveal" href="https://www.coursera.org/account/accomplishments/verify/4GJ0W9NCUXOV" target="_blank" rel="noopener"><span class="issuer">Packt</span><h4>General Data Protection Regulation (GDPR)</h4><span class="cert-foot"><span>Nov 2026</span><span class="verify">Verify ↗</span></span></a>
+      <a class="cert reveal" href="https://www.coursera.org/account/accomplishments/verify/QAXZN8QYUCSQ" target="_blank" rel="noopener"><span class="issuer">Board Infinity</span><h4>Data Structures & Backend with Java</h4><span class="cert-foot"><span>Jul 2024</span><span class="verify">Verify ↗</span></span></a>
+      <a class="cert reveal" href="https://www.coursera.org/account/accomplishments/verify/3VTNFCSW2YG3" target="_blank" rel="noopener"><span class="issuer">University of Michigan</span><h4>Using Python to Access Web Data</h4><span class="cert-foot"><span>Mar 2024</span><span class="verify">Verify ↗</span></span></a>
+      <a class="cert reveal" href="https://www.coursera.org/account/accomplishments/verify/WZ4TJXZX8PYZ" target="_blank" rel="noopener"><span class="issuer">University of Leeds</span><h4>Foundations of Software Testing and Validation</h4><span class="cert-foot"><span>Dec 2023</span><span class="verify">Verify ↗</span></span></a>
+      <a class="cert reveal" href="https://www.coursera.org/account/accomplishments/verify/PF5ZZ48ZUPJQ" target="_blank" rel="noopener"><span class="issuer">Vanderbilt University</span><h4>Prompt Engineering for ChatGPT</h4><span class="cert-foot"><span>Jul 2023</span><span class="verify">Verify ↗</span></span></a>
     </div>
   </div>
 </section>
